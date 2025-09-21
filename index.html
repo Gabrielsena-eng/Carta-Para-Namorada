@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História em Contagem</title>
+    
+    <!-- Importando fontes elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Poppins:wght@300;400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Configurações Globais --- */
+        :root {
+            --background-color: #121212;
+            --primary-red: #E57373; /* Unificando o vermelho romântico */
+            --text-color: #E0E0E0;
+            --polaroid-bg: #FDFDFD;
+            --shadow-color-strong: rgba(0, 0, 0, 0.5);
+            --shadow-color-soft: rgba(229, 115, 115, 0.2);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --font-script: 'Dancing Script', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 1rem;
+            animation: fadeIn 1.5s ease-in-out;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Títulos e Estrutura de Seção --- */
+        .main-title {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px var(--shadow-color-soft);
+        }
+        
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary-red);
+            margin: 4rem auto;
+            border-radius: 2px;
+        }
+
+        /* --- Contador Principal (NOVO ESTILO) --- */
+        #timer-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        #timer-container .time-unit {
+            min-width: 120px;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #timer-container .time-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        #timer-container .number {
+            font-size: 4rem;
+            font-family: var(--font-display);
+            color: var(--primary-red);
+        }
+        #timer-container .label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.75rem;
+        }
+        #total-minutes-container {
+            font-size: 1.5rem;
+            font-family: var(--font-display);
+            font-style: italic;
+        }
+        #total-minutes-container .number {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        /* --- Seção da Carta --- */
+        .letter-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            background-color: rgba(0,0,0,0.2);
+            border-left: 2px solid var(--primary-red);
+            margin-top: 2rem;
+        }
+
+        .letter-container p {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .letter-container .intro, .letter-container .conclusion { font-style: italic; }
+        .letter-container .signature {
+            font-family: var(--font-script);
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            text-align: right;
+            margin-top: 2rem;
+        }
+        .placeholder { color: var(--primary-red); font-style: italic; }
+
+        /* --- Galeria de Fotos em Arco --- */
+        .gallery-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 400px; /* Aumentei a altura para acomodar fotos maiores */
+            margin-top: 2rem;
+        }
+        
+        .polaroid {
+            position: absolute;
+            background-color: var(--polaroid-bg);
+            padding: 15px 15px 45px 15px;
+            border-radius: 4px;
+            box-shadow: 0 8px 16px var(--shadow-color-strong);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 240px; /* Aumentei a largura da polaroid */
+        }
+        
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            box-shadow: 0 12px 24px var(--shadow-color-strong);
+            z-index: 10;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1 / 1; /* Força o formato quadrado da foto */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+            border: 1px solid #eee; /* Adiciona uma borda sutil na foto */
+        }
+
+        .polaroid.p1 { transform: translateX(-240px) translateY(120px) rotate(-15deg); }
+        .polaroid.p2 { transform: translateX(-80px) translateY(20px) rotate(-5deg); }
+        .polaroid.p3 { transform: translateX(80px) translateY(20px) rotate(5deg); }
+        .polaroid.p4 { transform: translateX(240px) translateY(120px) rotate(15deg); }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.2rem; }
+            
+            #timer-container { gap: 1rem; }
+            #timer-container .time-unit { min-width: 90px; padding: 1rem; }
+            #timer-container .number { font-size: 2.5rem; }
+            #timer-container .label { font-size: 0.8rem; }
+            #total-minutes-container { font-size: 1.2rem; }
+
+            .letter-container { padding: 1.5rem; }
+            .letter-container p { font-size: 1.1rem; }
+
+            .gallery-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                position: static;
+                height: auto;
+                margin-top: 4rem;
+                padding: 0 1rem;
+            }
+            .polaroid { position: static; width: 100%; }
+            .polaroid.p1 { transform: rotate(-8deg); }
+            .polaroid.p2 { transform: rotate(5deg); }
+            .polaroid.p3 { transform: rotate(-6deg); }
+            .polaroid.p4 { transform: rotate(8deg); }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="main-title">O Tempo do Nosso Começo</h1>
+    </header>
+
+    <main>
+        <!-- Contador Principal (Estilo Novo) -->
+        <section id="timer-container">
+            <div class="time-unit"><span id="days" class="number">0</span><span class="label">Dias</span></div>
+            <div class="time-unit"><span id="hours" class="number">00</span><span class="label">Horas</span></div>
+            <div class="time-unit"><span id="minutes" class="number">00</span><span class="label">Minutos</span></div>
+            <div class="time-unit"><span id="seconds" class="number">00</span><span class="label">Segundos</span></div>
+        </section>
+        <div id="total-minutes-container">...ou <span id="total-minutes" class="number">0</span> minutos inesquecíveis.</div>
+
+        <div class="section-divider"></div>
+
+        <!-- Carta -->
+        <section class="letter-container">
+            <p class="intro">Meu amor, <span class="placeholder">Eu te amo!</span>,</p>
+            <p>Você sabe que sempre tento alinhar meus presentes com algo que eu gosto e com o que você gosta. Sei que não escrevi muitas cartas; não fiz a quantidade que você merece — você merece receber uma todo dia. Mas fiz isto de coração. Quero ser melhor em codar para fazer algo ainda mais incrível.</p>
+            <p>Antes de você, eu me sentia incompleto; tentava encontrar maneiras de me entender e de ser feliz. Quando te conheci, parecia que todas as perguntas, minhas dúvidas e confusões se resolveram, magicamente. Não sei explicar essa sensação.</p>
+            <p>Não sei como vou conseguir te dar tudo o que você merece, mas sei que farei o impossível para superar o meu eu de ontem e ser melhor amanhã do que hoje. Eu te amo mais a cada dia e não suportaria viver sem você.</p>
+            <p class="conclusion">Com todo o meu amor,</p>
+            <p class="signature"><span class="placeholder">Eu mesmo</span></p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Galeria de Fotos -->
+        <h2 class="main-title" style="font-size: 2.2rem; margin-top: 0;">Nossas Memórias</h2>
+        <section class="gallery-container">
+            <div class="polaroid p1"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_8b2b8451.jpg" alt="Nossa primeira foto"></div>
+            <div class="polaroid p2"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_a02944fc.jpg" alt="Nossa viagem"></div>
+            <div class="polaroid p3"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_e22eb6fa.jpg" alt="Um momento especial"></div>
+            <div class="polaroid p4"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_f1054717.jpg" alt="Nós hoje"></div>
+        </section>
+    </main>
+
+    <script>
+        // --- CONFIGURAÇÃO DA DATA ---
+        // Altere para a data e hora exatas do primeiro encontro.
+        // Formato: Ano, Mês (0-11), Dia, Hora, Minuto, Segundo
+        const startDate = new Date(2024, 10, 23, 20, 0, 0); // Mês 10 = Novembro
+
+        // --- LÓGICA DO CONTADOR ---
+        const daysElem = document.getElementById('days');
+        const hoursElem = document.getElementById('hours');
+        const minutesElem = document.getElementById('minutes');
+        const secondsElem = document.getElementById('seconds');
+        const totalMinutesElem = document.getElementById('total-minutes');
+
+        function updateTimer() {
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - startDate) / 1000);
+            
+            if (diffInSeconds >= 0) { // Garante que o contador só rode após a data de início
+                const days = Math.floor(diffInSeconds / 86400);
+                const hours = Math.floor((diffInSeconds % 86400) / 3600);
+                const minutes = Math.floor((diffInSeconds % 3600) / 60);
+                const seconds = diffInSeconds % 60;
+                const totalMinutes = Math.floor(diffInSeconds / 60);
+
+                daysElem.textContent = days;
+                hoursElem.textContent = String(hours).padStart(2, '0');
+                minutesElem.textContent = String(minutes).padStart(2, '0');
+                secondsElem.textContent = String(seconds).padStart(2, '0');
+                totalMinutesElem.textContent = totalMinutes.toLocaleString('pt-BR');
+            }
+        }
+
+        // --- INICIALIZAÇÃO ---
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+
+</body>
+</html>
