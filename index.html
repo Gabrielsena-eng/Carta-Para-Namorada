@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História em Contagem</title>
+    <title>Feliz Aniversário, Meu Amor!</title>
     
-    <!-- Importando fontes elegantes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Poppins:wght@300;400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
         /* --- Configurações Globais --- */
         :root {
             --background-color: #121212;
-            --primary-red: #E57373; /* Unificando o vermelho romântico */
+            --primary-red: #E57373; 
+            --gold-accent: #FFD700; /* Novo: Dourado para aniversário */
             --text-color: #E0E0E0;
             --polaroid-bg: #FDFDFD;
             --shadow-color-strong: rgba(0, 0, 0, 0.5);
@@ -46,6 +46,7 @@
             padding: 3rem 1rem;
             animation: fadeIn 1.5s ease-in-out;
             overflow-x: hidden;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -53,31 +54,64 @@
             to { opacity: 1; }
         }
 
-        /* --- Títulos e Estrutura de Seção --- */
+        /* --- Títulos e Cabeçalho de Aniversário --- */
+        header {
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sub-header {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .birthday-title {
+            font-family: var(--font-script);
+            font-size: 4.5rem; /* Fonte maior para destaque */
+            color: var(--gold-accent); /* Dourado */
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite ease-in-out;
+            line-height: 1.2;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { transform: scale(1.05); text-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+            100% { transform: scale(1); text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        }
+
         .main-title {
             font-family: var(--font-display);
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-red);
             margin-bottom: 2rem;
-            text-shadow: 0 0 15px var(--shadow-color-soft);
         }
         
         .section-divider {
             width: 80px;
             height: 2px;
-            background-color: var(--primary-red);
+            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
             margin: 4rem auto;
             border-radius: 2px;
         }
 
-        /* --- Contador Principal (NOVO ESTILO) --- */
+        /* --- Contador --- */
         #timer-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
             margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         #timer-container .time-unit {
@@ -91,36 +125,33 @@
         #timer-container .time-unit:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-color: var(--primary-red);
         }
         #timer-container .number {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-family: var(--font-display);
-            color: var(--primary-red);
+            color: var(--text-color);
         }
         #timer-container .label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 0.75rem;
-        }
-        #total-minutes-container {
-            font-size: 1.5rem;
-            font-family: var(--font-display);
-            font-style: italic;
-        }
-        #total-minutes-container .number {
             color: var(--primary-red);
-            font-weight: 700;
         }
 
         /* --- Seção da Carta --- */
         .letter-container {
             max-width: 800px;
             width: 100%;
-            padding: 2rem;
-            background-color: rgba(0,0,0,0.2);
-            border-left: 2px solid var(--primary-red);
+            padding: 2.5rem;
+            background-color: rgba(255,255,255,0.02);
+            border: 1px solid rgba(229, 115, 115, 0.3);
+            border-radius: 8px;
             margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
         }
 
         .letter-container p {
@@ -131,7 +162,13 @@
             margin-bottom: 1.5rem;
         }
 
-        .letter-container .intro, .letter-container .conclusion { font-style: italic; }
+        .letter-container .intro { 
+            font-size: 1.4rem; 
+            color: var(--gold-accent); 
+            font-weight: bold;
+            text-align: left;
+        }
+        
         .letter-container .signature {
             font-family: var(--font-script);
             font-size: 2.5rem;
@@ -139,42 +176,45 @@
             text-align: right;
             margin-top: 2rem;
         }
-        .placeholder { color: var(--primary-red); font-style: italic; }
+        
+        .highlight { color: var(--primary-red); }
 
-        /* --- Galeria de Fotos em Arco --- */
+        /* --- Galeria de Fotos --- */
         .gallery-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 400px; /* Aumentei a altura para acomodar fotos maiores */
+            height: 400px;
             margin-top: 2rem;
+            z-index: 2;
         }
         
         .polaroid {
             position: absolute;
             background-color: var(--polaroid-bg);
-            padding: 15px 15px 45px 15px;
-            border-radius: 4px;
-            box-shadow: 0 8px 16px var(--shadow-color-strong);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 240px; /* Aumentei a largura da polaroid */
+            padding: 15px 15px 50px 15px;
+            border-radius: 2px;
+            box-shadow: 0 10px 25px var(--shadow-color-strong);
+            transition: all 0.4s ease;
+            width: 240px;
+            cursor: pointer;
         }
         
         .polaroid:hover {
-            transform: scale(1.1) rotate(0deg) !important;
-            box-shadow: 0 12px 24px var(--shadow-color-strong);
-            z-index: 10;
+            transform: scale(1.15) rotate(0deg) !important;
+            z-index: 20;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
         .polaroid img {
             width: 100%;
             height: auto;
             display: block;
-            aspect-ratio: 1 / 1; /* Força o formato quadrado da foto */
-            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
-            border: 1px solid #eee; /* Adiciona uma borda sutil na foto */
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 1px solid #eee;
         }
 
         .polaroid.p1 { transform: translateX(-240px) translateY(120px) rotate(-15deg); }
@@ -182,117 +222,165 @@
         .polaroid.p3 { transform: translateX(80px) translateY(20px) rotate(5deg); }
         .polaroid.p4 { transform: translateX(240px) translateY(120px) rotate(15deg); }
 
+        /* --- Confete (Canvas) --- */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         /* --- Responsividade --- */
         @media (max-width: 768px) {
-            .main-title { font-size: 2.2rem; }
+            .birthday-title { font-size: 3rem; }
+            .main-title { font-size: 1.5rem; }
             
-            #timer-container { gap: 1rem; }
-            #timer-container .time-unit { min-width: 90px; padding: 1rem; }
-            #timer-container .number { font-size: 2.5rem; }
-            #timer-container .label { font-size: 0.8rem; }
-            #total-minutes-container { font-size: 1.2rem; }
-
-            .letter-container { padding: 1.5rem; }
-            .letter-container p { font-size: 1.1rem; }
+            #timer-container { gap: 0.8rem; }
+            #timer-container .time-unit { min-width: 80px; padding: 1rem; }
+            #timer-container .number { font-size: 2rem; }
+            #timer-container .label { font-size: 0.7rem; }
 
             .gallery-container {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-                position: static;
+                gap: 1rem;
                 height: auto;
-                margin-top: 4rem;
-                padding: 0 1rem;
+                position: static;
+                margin-top: 3rem;
             }
-            .polaroid { position: static; width: 100%; }
-            .polaroid.p1 { transform: rotate(-8deg); }
-            .polaroid.p2 { transform: rotate(5deg); }
-            .polaroid.p3 { transform: rotate(-6deg); }
-            .polaroid.p4 { transform: rotate(8deg); }
+            .polaroid { position: static; width: 100%; transform: none !important; }
         }
-
-        @media (max-width: 480px) {
-            .gallery-container { grid-template-columns: 1fr; gap: 2rem; }
-        }
-
     </style>
 </head>
 <body>
 
+    <canvas id="confetti-canvas"></canvas>
+
     <header>
-        <h1 class="main-title">O Tempo do Nosso Começo</h1>
+        <div class="sub-header">Hoje o dia é todo seu</div>
+        <h1 class="birthday-title">Feliz Aniversário!</h1>
+        <p class="main-title">E celebrando nosso tempo juntos...</p>
     </header>
 
     <main>
-        <!-- Contador Principal (Estilo Novo) -->
         <section id="timer-container">
             <div class="time-unit"><span id="days" class="number">0</span><span class="label">Dias</span></div>
             <div class="time-unit"><span id="hours" class="number">00</span><span class="label">Horas</span></div>
             <div class="time-unit"><span id="minutes" class="number">00</span><span class="label">Minutos</span></div>
             <div class="time-unit"><span id="seconds" class="number">00</span><span class="label">Segundos</span></div>
         </section>
-        <div id="total-minutes-container">...ou <span id="total-minutes" class="number">0</span> minutos inesquecíveis.</div>
 
         <div class="section-divider"></div>
 
-        <!-- Carta -->
         <section class="letter-container">
-            <p class="intro">Meu amor, <span class="placeholder">Eu te amo!</span>,</p>
-            <p>Você sabe que sempre tento alinhar meus presentes com algo que eu gosto e com o que você gosta. Sei que não escrevi muitas cartas; não fiz a quantidade que você merece — você merece receber uma todo dia. Mas fiz isto de coração. Quero ser melhor em codar para fazer algo ainda mais incrível.</p>
-            <p>Antes de você, eu me sentia incompleto; tentava encontrar maneiras de me entender e de ser feliz. Quando te conheci, parecia que todas as perguntas, minhas dúvidas e confusões se resolveram, magicamente. Não sei explicar essa sensação.</p>
-            <p>Não sei como vou conseguir te dar tudo o que você merece, mas sei que farei o impossível para superar o meu eu de ontem e ser melhor amanhã do que hoje. Eu te amo mais a cada dia e não suportaria viver sem você.</p>
-            <p class="conclusion">Com todo o meu amor,</p>
-            <p class="signature"><span class="placeholder">Eu mesmo</span></p>
+            <p class="intro">Meu amor,</p>
+            
+            <p>Hoje eu estou tão feliz que sinto até que estou "roubando" um pouco do seu momento. Desculpa por isso, mas sinto que esse também é o nosso momento. De verdade, não tem como explicar o quanto fico feliz por você.</p>
+            
+            <p>Eu sei que é óbvio que vamos repetir essa comemoração infinitas vezes, já que o plano é passar o resto da vida juntos. Mas o seu dia hoje me fez lembrar da gente e "daquele" momento que só nós dois sabemos... Quem diria que uma história tão linda passaria por um cenário tão glamouroso quanto a <span class="highlight">frente de um banheiro</span>? O lugar mais romântico do mundo... (Mas sério amor, foi muito bom).</p>
+            
+            <p>Hoje é o seu dia, só seu, e eu fico honrado em participar. Às vezes você não percebe a mulher maravilhosa que é, e nem o quão sortudos nós somos (eu e sua família) de ter você. E aproveita, viu? Porque prometo que esse será o seu aniversário mais "simples". Pode anotar: os próximos serão comemorados em uma ilha reservada.</p>
+            
+            <p>Eu te amo, minha bebezinha. Que esse dia seja inesquecível.</p>
+
+            <p class="signature">Feliz aniversário! <br>Antonio</p>
         </section>
 
         <div class="section-divider"></div>
 
-        <!-- Galeria de Fotos -->
-        <h2 class="main-title" style="font-size: 2.2rem; margin-top: 0;">Nossas Memórias</h2>
+        <h2 class="main-title">Nossos Momentos</h2>
         <section class="gallery-container">
-            <div class="polaroid p1"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_8b2b8451.jpg" alt="Nossa primeira foto"></div>
-            <div class="polaroid p2"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_a02944fc.jpg" alt="Nossa viagem"></div>
-            <div class="polaroid p3"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_e22eb6fa.jpg" alt="Um momento especial"></div>
-            <div class="polaroid p4"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_f1054717.jpg" alt="Nós hoje"></div>
+            <div class="polaroid p1"><img src="Imagem do WhatsApp de 2025-09-21 à(s) 12.53.39_8b2b8451.jpg" alt="Foto 1"></div>
+            <div class="polaroid p2"><img src="foto praia.jpg" alt="Foto 2"></div>
+            <div class="polaroid p3"><img src="nos dois.jpg" alt="Foto 3"></div>
+            <div class="polaroid p4"><img src="foto natal.jpg" alt="Foto 4"></div>
         </section>
     </main>
 
     <script>
-        // --- CONFIGURAÇÃO DA DATA ---
-        // Altere para a data e hora exatas do primeiro encontro.
-        // Formato: Ano, Mês (0-11), Dia, Hora, Minuto, Segundo
-        const startDate = new Date(2024, 10, 23, 20, 0, 0); // Mês 10 = Novembro
-
         // --- LÓGICA DO CONTADOR ---
-        const daysElem = document.getElementById('days');
-        const hoursElem = document.getElementById('hours');
-        const minutesElem = document.getElementById('minutes');
-        const secondsElem = document.getElementById('seconds');
-        const totalMinutesElem = document.getElementById('total-minutes');
+        // Altere para a data de início do namoro
+        const startDate = new Date(2024, 10, 23, 20, 0, 0); 
 
         function updateTimer() {
             const now = new Date();
             const diffInSeconds = Math.floor((now - startDate) / 1000);
             
-            if (diffInSeconds >= 0) { // Garante que o contador só rode após a data de início
+            if (diffInSeconds >= 0) {
                 const days = Math.floor(diffInSeconds / 86400);
                 const hours = Math.floor((diffInSeconds % 86400) / 3600);
                 const minutes = Math.floor((diffInSeconds % 3600) / 60);
                 const seconds = diffInSeconds % 60;
-                const totalMinutes = Math.floor(diffInSeconds / 60);
 
-                daysElem.textContent = days;
-                hoursElem.textContent = String(hours).padStart(2, '0');
-                minutesElem.textContent = String(minutes).padStart(2, '0');
-                secondsElem.textContent = String(seconds).padStart(2, '0');
-                totalMinutesElem.textContent = totalMinutes.toLocaleString('pt-BR');
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // --- EFEITO DE CONFETES ---
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const confettiParticles = [];
+        const confettiCount = 150;
+        const colors = ['#E57373', '#FFD700', '#FFFFFF', '#BA68C8', '#4DD0E1'];
+
+        function Confetti() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.size = Math.random() * 5 + 3;
+            this.speedY = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 2 - 1;
+            
+            this.update = function() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y > canvas.height) {
+                    this.y = 0 - this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            
+            this.draw = function() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        // --- INICIALIZAÇÃO ---
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    </script>
+        function initConfetti() {
+            for (let i = 0; i < confettiCount; i++) {
+                confettiParticles.push(new Confetti());
+            }
+            animateConfetti();
+        }
 
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < confettiParticles.length; i++) {
+                confettiParticles[i].update();
+                confettiParticles[i].draw();
+            }
+            requestAnimationFrame(animateConfetti);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        initConfetti();
+    </script>
 </body>
 </html>
